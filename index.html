@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Notification Test</h2>
+    <button onclick="sendTest()">Send Test Notification</button>
+
+    <script>
+        function sendTest() {
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    access_key: 'c080d4ee-bad7-48dd-9644-34d538ca885a',
+                    subject: 'TEST ALERT',
+                    message: 'If you see this, your notification system is WORKING!'
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Test sent! Check your email (and Spam folder).");
+                } else {
+                    alert("Error. Your key might not be activated.");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
